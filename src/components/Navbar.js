@@ -16,9 +16,15 @@ const Navbar = () => {
         <Link className="pb-1 border-b-2 border-white" to="/">
           Home
         </Link>
-        <Link className="pb-1 border-b-2 border-white" to="/login">
-          Login
-        </Link>
+        {!user ? (
+          <Link className="pb-1 border-b-2 border-white" to="/login">
+            Login
+          </Link>
+        ) : (
+          <Link className="pb-1 border-b-2 border-white" to="/create">
+            Create Post
+          </Link>
+        )}
       </div>
 
       <div className="flex items-center gap-4">
