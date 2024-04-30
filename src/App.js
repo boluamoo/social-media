@@ -4,8 +4,11 @@ import Navbar from './components/Navbar'
 import Login from './pages/Login'
 import Main from './pages/Main'
 import CreatePost from './pages/create-post/CreatePost'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from './config/firebase'
 
 function App() {
+  const [user] = useAuthState(auth)
   return (
     <div className="App">
       <Router>
@@ -13,7 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/create" element={<CreatePost />} />
+          {user && <Route path="/create" element={<CreatePost />} />}
         </Routes>
       </Router>
     </div>
